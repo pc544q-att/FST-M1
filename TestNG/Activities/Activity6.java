@@ -1,6 +1,4 @@
-package project;
-
-import java.util.List;
+package activities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,47 +6,40 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Activity6 {
 	
-	WebDriver driver;
+WebDriver driver;
 	
 	@BeforeMethod
-	public void setUp() {
-		
+	public void setup() {
 		driver= new FirefoxDriver();
-		driver.get("http://alchemy.hguy.co/crm");
+		driver.get("https://v1.training-support.net/selenium/login-form");
 	}
+	
 	
 	@Test
-	public void toolbarActivityTest() {
+	@Parameters({"username","password"})
+	public void loginTest(String username, String password) {
 		
-		driver.findElement(By.xpath("//input[@id='user_name']")).sendKeys("admin");
-		driver.findElement(By.xpath("//input[@id='username_password']")).sendKeys("pa$$w0rd");
-		driver.findElement(By.xpath("//input[@id='bigbutton']")).click();
+		WebElement name = driver.findElement(By.id("username"));
+		WebElement passwd = driver.findElement(By.id("password"));
 		
-		WebElement toolbar = driver.findElement(By.id("toolbar"));
+		name.clear();
+		passwd.clear();
 		
-		List<WebElement> options = toolbar.findElements(By.tagName("a"));
+		name.sendKeys(username);
+		passwd.sendKeys(password);
 		
-		for (WebElement option : options)
-		{
-			
-			if(option.getText().equalsIgnoreCase("Activities")) {
-				System.out.println("Activity option is there in toolbar: "+ option);
-				driver.quit();
-				
-			}
-		}
-		
-	
-		
+		driver.findElement(By.xpath("//*[text()='Log in']")).click();
 	}
 	
-/*	@AfterMethod
+	
+	@AfterMethod
 	public void teardown() {
 		driver.quit();
-	}*/
+	}
 
 }
