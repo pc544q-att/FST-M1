@@ -1,4 +1,4 @@
-package demos;
+package activities;
 
 
 import java.util.List;

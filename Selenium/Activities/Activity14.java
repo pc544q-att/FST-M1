@@ -1,13 +1,13 @@
-package demos;
+package activities;
 
-import java.time.Duration;
+//import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+//import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Activity14 {
 
@@ -18,7 +18,7 @@ public class Activity14 {
 		
 		        WebDriver driver = new FirefoxDriver();
 		        
-		        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		     
 		        driver.get("https://v1.training-support.net/selenium/tables");
